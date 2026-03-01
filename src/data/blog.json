@@ -1,0 +1,24 @@
+[
+    {
+        "id": "1",
+        "title": "The Future of AI-Driven Workflows in 2026",
+        "slug": "future-of-ai-workflows-2026",
+        "excerpt": "How autonomous agents and integrated AI systems are reshaping the digital landscape.",
+        "content": "In early 2026, we are seeing a massive shift towards fully integrated AI systems. It's no longer just about chatbots, but about autonomous agents that can execute complex workflows from design to deployment. At Navrine, we focus on modular AI architectures that grow with your business...",
+        "category": "Technology",
+        "date": "2026-03-01",
+        "author": "Navrine Engineering Team",
+        "imageUrl": "https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=1932&auto=format&fit=crop"
+    },
+    {
+        "id": "2",
+        "title": "Designing for High-End Conversion",
+        "slug": "designing-for-conversion",
+        "excerpt": "Why premium aesthetics and subtle micro-animations are the key to long-term brand loyalty.",
+        "content": "Aesthetics are not just about looking good; they are about building trust. When a user interacts with a premium interface, they subconsciously associate the brand with quality and attention to detail. This article explores our approach to glassmorphism and motion design...",
+        "category": "Design",
+        "date": "2026-02-15",
+        "author": "Creative Strategy Unit",
+        "imageUrl": "https://images.unsplash.com/photo-1558655146-d09347e92766?q=80&w=1964&auto=format&fit=crop"
+    }
+]
