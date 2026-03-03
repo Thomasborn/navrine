@@ -44,9 +44,8 @@ export function Navbar() {
                             <Link to="/work" className="hover:text-white/50 transition-colors w-max" onClick={closeMenu}>Work</Link>
                             <Link to="/services" className="hover:text-white/50 transition-colors w-max" onClick={closeMenu}>Services</Link>
                             <Link to="/agency" className="hover:text-white/50 transition-colors w-max" onClick={closeMenu}>Agency</Link>
+                            <Link to="/blog" className="hover:text-white/50 transition-colors w-max" onClick={closeMenu}>Insights</Link>
                             <Link to="/contact" className="hover:text-white/50 transition-colors w-max" onClick={closeMenu}>Contact</Link>
-                            <Link to="/blog" className="hover:text-white/50 transition-colors w-max" onClick={closeMenu}>Blog</Link>
-                            <Link to="/admin" className="text-sm font-mono text-white/20 hover:text-[#bdfb54] transition-colors w-max mt-4" onClick={closeMenu}>[Admin CMS]</Link>
                         </div>
 
                         <div className="flex gap-6 text-sm text-white/50 font-medium uppercase tracking-widest">

@@ -29,9 +29,9 @@ export function Services() {
     const [openIdx, setOpenIdx] = useState<number | null>(null);
 
     return (
-        <div className="min-h-screen bg-white text-black font-sans pt-32 px-6 md:px-12 lg:px-24 pb-24">
+        <main className="min-h-screen bg-white text-black font-sans pt-32 px-6 md:px-12 lg:px-24 pb-24" aria-label="Services Overview">
             <div className="max-w-7xl mx-auto">
-                <div className="mb-24">
+                <header className="mb-24">
                     <motion.h1
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
@@ -48,19 +48,15 @@ export function Services() {
                     >
                         We build comprehensive digital solutions designed to accelerate growth and optimize operations.
                     </motion.p>
-                </div>
+                </header>
 
-                <div className="border-t border-black/10">
+                <section className="border-t border-black/10" aria-label="Detailed Service Offerings">
                     {servicesData.map((service, idx) => {
                         const isOpen = openIdx === idx;
 
                         return (
-                            <motion.div
+                            <article
                                 key={idx}
-                                initial={{ opacity: 0, x: -20 }}
-                                whileInView={{ opacity: 1, x: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ delay: idx * 0.1 }}
                                 className="group border-b border-black/10 overflow-hidden"
                             >
                                 <div
@@ -112,11 +108,11 @@ export function Services() {
                                         </motion.div>
                                     )}
                                 </AnimatePresence>
-                            </motion.div>
+                            </article>
                         );
                     })}
-                </div>
+                </section>
             </div>
-        </div>
+        </main>
     );
 }

@@ -8,8 +8,6 @@ import { Services } from './pages/Services';
 import { Agency } from './pages/Agency';
 import { Contact } from './pages/Contact';
 import { Blog } from './pages/Blog';
-import { BlogPostPage } from './pages/BlogPost';
-import { Admin } from './pages/Admin';
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -31,10 +29,8 @@ export default function App() {
         <Route path="/work" element={<Work />} />
         <Route path="/services" element={<Services />} />
         <Route path="/agency" element={<Agency />} />
-        <Route path="/contact" element={<Contact />} />
         <Route path="/blog" element={<Blog />} />
-        <Route path="/blog/:slug" element={<BlogPostPage />} />
-        <Route path="/admin" element={<Admin />} />
+        <Route path="/contact" element={<Contact />} />
       </Routes>
       <Footer />
     </Router>

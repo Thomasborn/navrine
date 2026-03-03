@@ -61,9 +61,6 @@ export function Footer() {
                     <a href="mailto:hello@navrine.studio" className={isLightPage ? "hover:text-black transition-colors" : "hover:text-white transition-colors"}>
                         Email
                     </a>
-                    <a href="/admin" className="text-[10px] opacity-20 hover:opacity-100 transition-opacity flex items-center">
-                        CMS
-                    </a>
                 </div>
             </div>
         </footer>

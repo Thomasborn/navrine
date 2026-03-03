@@ -10,31 +10,31 @@ export function Work() {
         {
             title: "AI Infrastructure",
             client: "Next-Gen Web Development",
-            image: "https://picsum.photos/seed/navrine-ai/800/1000",
+            image: "/Content1.png",
             tags: ["AI", "Web"],
         },
         {
             title: "Financial Clarity",
             client: "Data-Driven Operations",
-            image: "https://picsum.photos/seed/navrine-data/800/1000",
+            image: "/Content2.png",
             tags: ["Data", "Strategy"],
         },
         {
             title: "Brand Identity",
             client: "Creative Branding & Strategy",
-            image: "https://picsum.photos/seed/navrine-brand/800/1000",
+            image: "/Content3.png",
             tags: ["Branding", "Marketing"],
         },
         {
             title: "E-commerce Optimization",
             client: "Conversion rate scaling",
-            image: "https://picsum.photos/seed/navrine-ecom/800/1000",
+            image: "/Content4.png",
             tags: ["Web", "Strategy"],
         }
     ];
 
     return (
-        <div className="min-h-screen bg-[#050505] text-white selection:bg-white selection:text-black font-sans pt-32 px-6 md:px-12 lg:px-24">
+        <main className="min-h-screen bg-[#050505] text-white selection:bg-white selection:text-black font-sans pt-32 px-6 md:px-12 lg:px-24" aria-label="Portfolio and Selected Works">
             <AnimatePresence>
                 {isVideoModalOpen && (
                     <motion.div
@@ -43,10 +43,14 @@ export function Work() {
                         exit={{ opacity: 0 }}
                         className="fixed inset-0 z-[60] bg-black/90 backdrop-blur-sm flex items-center justify-center p-6"
                         onClick={() => setIsVideoModalOpen(false)}
+                        role="dialog"
+                        aria-modal="true"
+                        aria-label="Project Video Preview Modal"
                     >
                         <button
                             className="absolute top-6 right-6 text-white/50 hover:text-white transition-colors"
                             onClick={() => setIsVideoModalOpen(false)}
+                            aria-label="Close Video Modal"
                         >
                             <X className="w-8 h-8" />
                         </button>
@@ -58,7 +62,7 @@ export function Work() {
                             onClick={(e) => e.stopPropagation()}
                         >
                             <div className="text-center">
-                                <Play className="w-16 h-16 text-white/20 mx-auto mb-4" />
+                                <Play className="w-16 h-16 text-white/20 mx-auto mb-4" aria-hidden="true" />
                                 <p className="text-white/50 uppercase tracking-widest text-sm font-bold">Interactive Case Study Coming Soon</p>
                             </div>
                         </motion.div>
@@ -67,55 +71,63 @@ export function Work() {
             </AnimatePresence>
 
             <div className="max-w-7xl mx-auto">
-                <motion.h1
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    className="text-[10vw] md:text-[6vw] font-bold tracking-tighter uppercase leading-[0.85] mb-12"
-                >
-                    Selected <br />
-                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-white/40">Work</span>
-                </motion.h1>
+                <header>
+                    <motion.h1
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        className="text-[10vw] md:text-[6vw] font-bold tracking-tighter uppercase leading-[0.85] mb-12"
+                    >
+                        Selected <br />
+                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-white/40">Work</span>
+                    </motion.h1>
+                </header>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-32">
+                <section className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-32" aria-label="Project Grid">
                     {projects.map((project, idx) => (
-                        <motion.div
+                        <article
                             key={idx}
-                            initial={{ opacity: 0, y: 50 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true, margin: "-100px" }}
-                            transition={{ duration: 0.6, delay: idx * 0.1 }}
-                            onClick={() => setIsVideoModalOpen(true)}
+                            role="button"
+                            tabIndex={0}
+                            aria-label={`View interactive case study for ${project.title}`}
                             className="group cursor-pointer"
                         >
-                            <div className="relative aspect-[4/5] overflow-hidden bg-white/5 mb-6 rounded-lg">
-                                <img
-                                    src={project.image}
-                                    alt={project.title}
-                                    className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
-                                    referrerPolicy="no-referrer"
-                                />
-                                <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
-                                    <div className="w-20 h-20 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center border border-white/20 scale-50 group-hover:scale-100 transition-transform duration-500">
-                                        <ArrowUpRight className="w-8 h-8 text-white" />
+                            <motion.div
+                                initial={{ opacity: 0, y: 50 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true, margin: "-100px" }}
+                                transition={{ duration: 0.6, delay: idx * 0.1 }}
+                                onClick={() => setIsVideoModalOpen(true)}
+                            >
+                                <div className="relative aspect-[4/5] overflow-hidden bg-white/5 mb-6 rounded-lg">
+                                    <img
+                                        src={project.image}
+                                        alt={`Case study mockups showcasing ${project.title} for ${project.client}. Includes tags indicating core focuses on ${project.tags.join(' and ')}.`}
+                                        className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
+                                        referrerPolicy="no-referrer"
+                                    />
+                                    <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
+                                        <div className="w-20 h-20 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center border border-white/20 scale-50 group-hover:scale-100 transition-transform duration-500">
+                                            <ArrowUpRight className="w-8 h-8 text-white" aria-hidden="true" />
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div className="flex flex-wrap gap-2 mb-3">
-                                {project.tags.map((tag) => (
-                                    <span
-                                        key={tag}
-                                        className="text-[10px] uppercase tracking-widest px-3 py-1 border border-white/20 rounded-full"
-                                    >
-                                        {tag}
-                                    </span>
-                                ))}
-                            </div>
-                            <h3 className="text-2xl font-bold mb-1">{project.title}</h3>
-                            <p className="text-white/50 text-sm">{project.client}</p>
-                        </motion.div>
+                                <div className="flex flex-wrap gap-2 mb-3">
+                                    {project.tags.map((tag) => (
+                                        <span
+                                            key={tag}
+                                            className="text-[10px] uppercase tracking-widest px-3 py-1 border border-white/20 rounded-full"
+                                        >
+                                            {tag}
+                                        </span>
+                                    ))}
+                                </div>
+                                <h3 className="text-2xl font-bold mb-1">{project.title}</h3>
+                                <p className="text-white/50 text-sm">{project.client}</p>
+                            </motion.div>
+                        </article>
                     ))}
-                </div>
+                </section>
             </div>
-        </div>
+        </main>
     );
 }
