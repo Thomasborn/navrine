@@ -1,23 +1,60 @@
-import React, { useState } from "react";
-import { motion, AnimatePresence } from "motion/react";
+"use client";
+
+import React, { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
-import { Link } from "react-router-dom";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { useTranslation } from "react-i18next";
+import "@/translations/i18n";
 
 export function Navbar() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const { t, i18n } = useTranslation();
+    const pathname = usePathname();
+    const [mounted, setMounted] = useState(false);
+
+    useEffect(() => {
+        setMounted(true);
+    }, []);
+
+    const language = i18n.language;
+    const setLanguage = (lang: string) => i18n.changeLanguage(lang);
 
     const closeMenu = () => setIsMenuOpen(false);
+
+    if (!mounted) return null;
 
     return (
         <>
             <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 py-6 mix-blend-difference text-white pointer-events-none">
-                <Link to="/" className="text-2xl font-bold tracking-tighter pointer-events-auto">NAVRINE</Link>
-                <button
-                    onClick={() => setIsMenuOpen(true)}
-                    className="flex items-center gap-2 text-sm font-medium uppercase tracking-widest hover:opacity-70 transition-opacity pointer-events-auto"
-                >
-                    Menu <Menu className="w-5 h-5" />
-                </button>
+                <Link href="/" className="text-2xl font-bold tracking-tighter pointer-events-auto">NAVRINE</Link>
+                
+                <div className="flex items-center gap-6 pointer-events-auto">
+                    {/* Language Switcher */}
+                    <div className="hidden md:flex items-center gap-3 text-[10px] font-bold uppercase tracking-widest bg-white/5 backdrop-blur-md border border-white/10 px-4 py-2 rounded-full">
+                        <button 
+                            onClick={() => setLanguage('en')}
+                            className={`transition-colors ${language === 'en' ? 'text-white' : 'text-white/30 hover:text-white/60'}`}
+                        >
+                            EN
+                        </button>
+                        <span className="w-[1px] h-3 bg-white/10"></span>
+                        <button 
+                            onClick={() => setLanguage('id')}
+                            className={`transition-colors ${language === 'id' ? 'text-white' : 'text-white/30 hover:text-white/60'}`}
+                        >
+                            ID
+                        </button>
+                    </div>
+
+                    <button
+                        onClick={() => setIsMenuOpen(true)}
+                        className="flex items-center gap-2 text-sm font-medium uppercase tracking-widest hover:opacity-70 transition-opacity"
+                    >
+                        {t('nav.menu')} <Menu className="w-5 h-5" />
+                    </button>
+                </div>
             </nav>
 
             {/* Fullscreen Menu Overlay */}
@@ -31,21 +68,40 @@ export function Navbar() {
                         className="fixed inset-0 z-[60] bg-[#050505] flex flex-col justify-between px-6 md:px-12 lg:px-24 py-12 text-white"
                     >
                         <div className="flex items-center justify-between">
-                            <Link to="/" onClick={closeMenu} className="text-2xl font-bold tracking-tighter text-white">NAVRINE</Link>
-                            <button
-                                onClick={closeMenu}
-                                className="flex items-center gap-2 text-sm font-medium uppercase tracking-widest hover:opacity-70 transition-opacity text-white"
-                            >
-                                Close <X className="w-5 h-5" />
-                            </button>
+                            <Link href="/" onClick={closeMenu} className="text-2xl font-bold tracking-tighter text-white">NAVRINE</Link>
+                            
+                            <div className="flex items-center gap-8">
+                                {/* Mobile Language Switcher (inside menu) */}
+                                <div className="flex items-center gap-4 text-xs font-bold uppercase tracking-widest">
+                                    <button 
+                                        onClick={() => setLanguage('en')}
+                                        className={`transition-colors ${language === 'en' ? 'text-white' : 'text-white/30'}`}
+                                    >
+                                        English
+                                    </button>
+                                    <button 
+                                        onClick={() => setLanguage('id')}
+                                        className={`transition-colors ${language === 'id' ? 'text-white' : 'text-white/30'}`}
+                                    >
+                                        Bahasa
+                                    </button>
+                                </div>
+
+                                <button
+                                    onClick={closeMenu}
+                                    className="flex items-center gap-2 text-sm font-medium uppercase tracking-widest hover:opacity-70 transition-opacity text-white"
+                                >
+                                    {t('nav.close')} <X className="w-5 h-5" />
+                                </button>
+                            </div>
                         </div>
 
                         <div className="flex flex-col gap-6 text-4xl md:text-7xl font-bold tracking-tighter uppercase">
-                            <Link to="/work" className="hover:text-white/50 transition-colors w-max" onClick={closeMenu}>Work</Link>
-                            <Link to="/services" className="hover:text-white/50 transition-colors w-max" onClick={closeMenu}>Services</Link>
-                            <Link to="/agency" className="hover:text-white/50 transition-colors w-max" onClick={closeMenu}>Agency</Link>
-                            <Link to="/blog" className="hover:text-white/50 transition-colors w-max" onClick={closeMenu}>Insights</Link>
-                            <Link to="/contact" className="hover:text-white/50 transition-colors w-max" onClick={closeMenu}>Contact</Link>
+                            <Link href="/work" className={`hover:text-white/50 transition-colors w-max ${pathname === '/work' ? 'text-[#bdfb54]' : ''}`} onClick={closeMenu}>{t('nav.work')}</Link>
+                            <Link href="/services" className={`hover:text-white/50 transition-colors w-max ${pathname === '/services' ? 'text-[#bdfb54]' : ''}`} onClick={closeMenu}>{t('nav.services')}</Link>
+                            <Link href="/agency" className={`hover:text-white/50 transition-colors w-max ${pathname === '/agency' ? 'text-[#bdfb54]' : ''}`} onClick={closeMenu}>{t('nav.agency')}</Link>
+                            <Link href="/blog" className={`hover:text-white/50 transition-colors w-max ${pathname === '/blog' ? 'text-[#bdfb54]' : ''}`} onClick={closeMenu}>{t('nav.insights')}</Link>
+                            <Link href="/contact" className={`hover:text-white/50 transition-colors w-max ${pathname === '/contact' ? 'text-[#bdfb54]' : ''}`} onClick={closeMenu}>{t('nav.contact')}</Link>
                         </div>
 
                         <div className="flex gap-6 text-sm text-white/50 font-medium uppercase tracking-widest">

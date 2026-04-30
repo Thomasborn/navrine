@@ -1,13 +1,18 @@
+"use client";
+
 import React from 'react';
-import { motion } from 'motion/react';
-import { useLocation } from 'react-router-dom';
+import { motion } from 'framer-motion';
+import { usePathname } from 'next/navigation';
 import { cn } from '../utils/cn';
+import { useTranslation } from 'react-i18next';
+import "@/translations/i18n";
 
 export function Footer() {
-    const location = useLocation();
+    const pathname = usePathname();
+    const { t } = useTranslation();
 
     // Determine background color based on route to match the page background seamlessly
-    const isLightPage = location.pathname === '/services';
+    const isLightPage = pathname === '/services';
 
     return (
         <footer className={cn(
@@ -21,15 +26,15 @@ export function Footer() {
                 transition={{ duration: 0.6 }}
                 className="text-[8vw] md:text-[6vw] font-bold tracking-tighter uppercase leading-[0.9] mb-12"
             >
-                Ready to craft <br />
+                {t('footer.title1')} <br />
                 <span className={cn(
                     "text-transparent bg-clip-text bg-gradient-to-r",
                     isLightPage ? "from-black to-black/40" : "from-white to-white/40"
                 )}>
-                    fruitful experiences
+                    {t('footer.title2')}
                 </span>{" "}
                 <br />
-                today?
+                {t('footer.title3')}
             </motion.h2>
 
             <motion.a
@@ -43,14 +48,14 @@ export function Footer() {
                     isLightPage ? "bg-black text-white hover:bg-black/90" : "bg-white text-black hover:bg-white/90"
                 )}
             >
-                Let's Talk
+                {t('footer.cta')}
             </motion.a>
 
             <div className={cn(
                 "flex flex-col md:flex-row justify-between items-center gap-6 text-sm font-medium uppercase tracking-widest",
                 isLightPage ? "text-black/50" : "text-white/50"
             )}>
-                <div>© 2026 NAVRINE. ALL RIGHTS RESERVED.</div>
+                <div>{t('footer.rights')}</div>
                 <div className="flex gap-6">
                     <a href="https://instagram.com/navrine.studio" target="_blank" rel="noreferrer" className={isLightPage ? "hover:text-black transition-colors" : "hover:text-white transition-colors"}>
                         Instagram
