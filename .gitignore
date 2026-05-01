@@ -16,6 +16,12 @@ dist-ssr
 .next/
 out/
 
+# Large files
+*.zip
+*.tar
+*.gz
+*.rar
+
 # Production
 build
 
