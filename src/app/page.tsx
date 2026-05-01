@@ -330,7 +330,7 @@ export default function Home() {
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24">
           <div className="space-y-6 md:space-y-12">
-            {servicesData.map((service, idx) => (
+            {servicesData.map((service: any, idx: number) => (
               <motion.div
                 key={idx}
                 onMouseEnter={() => setActiveServiceIdx(idx)}
@@ -352,7 +352,7 @@ export default function Home() {
                   "flex flex-wrap gap-2 transition-all duration-500",
                   activeServiceIdx === idx ? "opacity-100" : "opacity-0"
                 )}>
-                  {service.features.map((feature, fIdx) => (
+                  {service.features.map((feature: string, fIdx: number) => (
                     <span key={fIdx} className="text-[10px] md:text-xs font-bold uppercase tracking-widest bg-black text-white px-3 py-1.5 rounded-full">
                       {feature}
                     </span>
@@ -487,7 +487,7 @@ export default function Home() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12">
-            {processSteps.map((step, idx) => (
+            {processSteps.map((step: any, idx: number) => (
               <motion.div
                 key={idx}
                 initial={{ opacity: 0, y: 30 }}
@@ -516,7 +516,7 @@ export default function Home() {
           </div>
 
           <div className="space-y-4">
-            {faqs.map((faq, idx) => (
+            {faqs.map((faq: any, idx: number) => (
               <div
                 key={idx}
                 className="border border-white/10 rounded-2xl overflow-hidden bg-white/5"

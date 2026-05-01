@@ -145,7 +145,7 @@ export default function Blog() {
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12">
-                        {articles.slice(1).map((article, idx) => (
+                        {articles.slice(1).map((article: any, idx: number) => (
                             <motion.article
                                 key={article.id}
                                 initial={{ opacity: 0, y: 40 }}

@@ -25,7 +25,7 @@ export default function Agency() {
         <Eye key="eye" className="w-8 h-8 text-white/50" />
     ];
 
-    const values = pillarsListData.map((item, idx) => ({
+    const values = pillarsListData.map((item: any, idx: number) => ({
         ...item,
         icon: icons[idx]
     }));
@@ -80,7 +80,7 @@ export default function Agency() {
                     </motion.h2>
 
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-12 border-t border-white/10 pt-12">
-                        {values.map((value, idx) => (
+                        {values.map((value: any, idx: number) => (
                             <motion.div
                                 key={idx}
                                 initial={{ opacity: 0, y: 30 }}

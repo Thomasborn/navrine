@@ -42,7 +42,7 @@ export default function Services() {
                 </div>
 
                 <div className="border-t border-black/10">
-                    {servicesData.map((service, idx) => {
+                    {servicesData.map((service: any, idx: number) => {
                         const isOpen = openIdx === idx;
 
                         return (
@@ -85,7 +85,7 @@ export default function Services() {
                                                 <div>
                                                     <h4 className="text-sm font-bold uppercase tracking-widest text-black/40 mb-6">{t('services.capabilities')}</h4>
                                                     <ul className="space-y-4">
-                                                        {service.features.map((feature, fIdx) => (
+                                                        {service.features.map((feature: string, fIdx: number) => (
                                                             <motion.li
                                                                 key={fIdx}
                                                                 initial={{ opacity: 0, x: -10 }}

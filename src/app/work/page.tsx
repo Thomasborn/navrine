@@ -26,7 +26,7 @@ export default function Work() {
         { year: "2024", image: "/projects/navrine-ai.png", color: "#ffffff" }
     ];
 
-    const localizedWorksData = worksData.map((work, idx) => ({
+    const localizedWorksData = worksData.map((work: any, idx: number) => ({
         ...work,
         ...originalWorksData[idx]
     }));
@@ -58,7 +58,7 @@ export default function Work() {
                 </header>
 
                 <div className="space-y-32 md:space-y-48">
-                    {localizedWorksData.map((work, idx) => (
+                    {localizedWorksData.map((work: any, idx: number) => (
                         <ProjectCard key={idx} work={work} index={idx} t={t} />
                     ))}
                 </div>
