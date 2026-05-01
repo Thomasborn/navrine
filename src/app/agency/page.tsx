@@ -164,7 +164,7 @@ export default function Agency() {
                         <p className="text-xl text-white/60 mb-12 max-w-2xl mx-auto">
                             {t('agency.joinDesc')}
                         </p>
-                        <a href="mailto:hello@navrine.studio" className="inline-flex items-center justify-center px-10 py-5 bg-white text-black font-bold uppercase tracking-widest text-sm rounded-full hover:bg-white/90 transition-all hover:scale-105 active:scale-95">
+                        <a href="mailto:hello@navrine.com" className="inline-flex items-center justify-center px-10 py-5 bg-white text-black font-bold uppercase tracking-widest text-sm rounded-full hover:bg-white/90 transition-all hover:scale-105 active:scale-95">
                             {t('agency.joinButton')} <ArrowRight className="ml-2 w-4 h-4" />
                         </a>
                     </div>

@@ -42,7 +42,7 @@ export function Footer() {
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.2 }}
-                href="mailto:hello@navrine.studio"
+                href="mailto:hello@navrine.com"
                 className={cn(
                     "inline-block px-10 py-5 font-bold uppercase tracking-widest text-sm rounded-full transition-all mb-24 hover:scale-105 active:scale-95",
                     isLightPage ? "bg-black text-white hover:bg-black/90" : "bg-white text-black hover:bg-white/90"
@@ -63,7 +63,7 @@ export function Footer() {
                     <a href="https://linkedin.com/company/navrine" target="_blank" rel="noreferrer" className={isLightPage ? "hover:text-black transition-colors" : "hover:text-white transition-colors"}>
                         LinkedIn
                     </a>
-                    <a href="mailto:hello@navrine.studio" className={isLightPage ? "hover:text-black transition-colors" : "hover:text-white transition-colors"}>
+                    <a href="mailto:hello@navrine.com" className={isLightPage ? "hover:text-black transition-colors" : "hover:text-white transition-colors"}>
                         Email
                     </a>
                 </div>

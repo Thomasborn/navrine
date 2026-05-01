@@ -53,8 +53,8 @@ export default function Contact() {
                                 <h3 className="text-sm font-bold uppercase tracking-widest text-white/50 mb-3 flex items-center gap-2">
                                     <Mail className="w-4 h-4" /> {t('contact.email')}
                                 </h3>
-                                <a href="mailto:hello@navrine.studio" className="text-2xl font-medium hover:text-white/70 transition-colors">
-                                    hello@navrine.studio
+                                <a href="mailto:hello@navrine.com" className="text-2xl font-medium hover:text-white/70 transition-colors">
+                                    hello@navrine.com
                                 </a>
                             </div>
 
